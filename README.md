@@ -1,24 +1,12 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This simple to-do list made on rails 6 has the following functionality:
 
-Things you may want to cover:
+- Adding items to the list
+- Marking them as either completed or not (via the checkbox in the list)
+- Input validation while adding items (cannot add empty descriptions)
+- Deleting entries
 
-* Ruby version
+Known Limitations
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Alerts cannot be cancelled (due to inconsistencies with using webpacker on rails 6 and bootstrap-sprockets)
