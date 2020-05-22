@@ -1,0 +1,8 @@
+Rails.application.routes.draw do
+  resources :todos do
+    member do
+      patch :update
+    end
+  end
+  root 'todos#index'
+end

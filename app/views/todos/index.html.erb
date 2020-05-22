@@ -1,0 +1,52 @@
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th class="col-completed">Completed?</th>
+      <th class="col-description">Description</th>
+      <th class="col-delete" colspan="1"></th>
+    </tr>
+  </thead>
+
+  <% if @todos.empty? %>
+    <tbody>
+      <tr class="no-data">
+        <td colspan="3" style="text-align: center; 
+vertical-align: middle;">No items in To Do List yet!</td>
+      </tr>
+    </tbody>
+  <% else %>
+
+  <tbody>
+    <% @todos.each do |todo| %>
+
+      <% if todo.isCompleted %>
+        <tr>
+          <td class="col-completed">
+          <%= link_to todo_path(todo, todo: {description: todo.description, isCompleted: !todo.isCompleted}), method: :patch do %>
+          <i style="opacity: 0.4;" class="fa fa-check-square"></i>
+          <% end %>
+          </td>
+          <td class="striker"><%= todo.description %></td>
+          <td><%= link_to todo, method: :delete, data: { confirm: 'Are you sure you want to remove this item?' } do %>
+            <i class="fa fa-trash" /></i>
+            <% end %>
+          </td>
+        </tr>
+      <% else %>
+        <tr>
+          <td class="col-completed">
+          <%= link_to todo_path(todo, todo: {description: todo.description, isCompleted: !todo.isCompleted}), method: :patch do %>
+          <i class="far fa-square"></i>
+          <% end %>
+          </td>
+          <td><%= todo.description %></td>
+          <td><%= link_to todo, method: :delete, data: { confirm: 'Are you sure you want to remove this item?' } do %>
+            <i class="fa fa-trash"></i>
+            <% end %>
+          </td>
+        </tr>
+    <% end %>
+    <% end %>
+  </tbody>
+  <% end %>
+</table>
